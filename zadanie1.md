@@ -23,6 +23,8 @@ Aby zaimportowac plik csv do mongo wpisałem ponizszą komendę do konsoli:
 ```sh
 time mongoimport -c Topics --type csv --file Train.csv --headerline
 ```
+![mongo.png](https://raw.githubusercontent.com/alatoszewski/nosql-mongo/master/mongo.png)
+
 #####Import pliku do bazy PSQL
 Niestety PostresSQL nie jest tak "inteligentny" jak Mongo i nie jest wstanie odczytac struktury tabeli z pliku csv. Dlatego najpierw musialem stworzyc odpowiednia tabele.
 ```sh
@@ -37,6 +39,9 @@ Nastepnie mozna wypełnić tabele danymi z pliku:
 ```sh
 COPY Topics FROM '/home/Adam/Desktop/NoSQL/Train.csv' DELIMITER ',' CSV;
 ```
+
+
+![psql.png](https://raw.githubusercontent.com/alatoszewski/nosql-mongo/master/psql.png)
 
 ##Zestawiennie czasów
 
