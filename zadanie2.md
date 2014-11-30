@@ -114,11 +114,44 @@ Szukamy wpisów które zostały skomentowane oraz mają status Disliked.
 
 #MongoDB
 ```sh
-db.movies.aggregate( { $match: { "action": "Disliked" }},{ $match: { "comment": {$ne: ""} } }, { $group: { _id: "$title", count: {$sum: 1} } }, { $sort: { count: -1 } }, { $limit: 10 } );
+db.movies.aggregate(
+  {$match: 
+    {"action": "Disliked" }
+  },
+  {$match:
+    {"comment": {$ne: ""}} 
+  }, 
+  {$group: 
+    {_id: "$title", count: {$sum: 1}
+  }
+  }, 
+  {$sort: 
+    {count: -1 }
+  }, 
+  {$limit: 10}
+);
 ```
 #pymongo
 ```sh
-db.movies.aggregate( { "$match": { "action": "Disliked" }},{ "$match": { "comment": {"$ne": ""} } }, { "$group": { "_id": "$title", "count": {"$sum": 1} } }, { "$sort": { "count": -1 } }, { "$limit": 10 } );
+db.movies.aggregate(
+  {"$match": 
+    {"action": "Disliked" }
+  },
+  {"$match": 
+    { "comment": {"$ne": ""}
+  }
+  },
+  {"$group": 
+  {"_id": "$title", 
+    "count": 
+      {"$sum": 1}
+  } 
+  }, 
+  {"$sort": 
+    {"count": -1 }
+  }, 
+  {"$limit": 10} 
+);
 ```	
 
 ```sh

@@ -115,20 +115,70 @@ db.places.ensureIndex({loc : "2dsphere"})
 
 Zapytanie 1: Miasta oddalone od Warszawy o maksymalnie o 200 km:
 ```sh
-db.polskiemiasta.find({loc: {$near: {$geometry: {type: "Point", coordinates: [21.000366210937496, 52.231163984032676]}, $maxDistance: 200000}}}).skip(1)
+db.polskiemiasta.find(
+  {loc: 
+    {$near: 
+      {$geometry: 
+        {type: "Point", 
+	  coordinates: 
+	    [21.000366210937496, 52.231163984032676]
+	}, 
+	$maxDistance: 200000
+      }
+    }
+  }
+).skip(1)
 ```
 
 [Geojson1](https://github.com/alatoszewski/nosql-mongo/blob/master/Zapytanie1.geojson)
 
 Zapytanie 2: Poniższe zapytanie prezentuje mniejwięcej kształt województwa zachodnioporskiego:
 ```sh
-db.polskiemiasta.find({loc: {$geoWithin: {$geometry: {type: "Polygon", coordinates: [[[16.6717529296875,54.559322587438636],[16.858520507812496,54.23955053156179],[16.737670898437496,54.210648685175904],[16.8475341796875,53.97224342934289],[16.885986328125,53.6544055985474],[16.4410400390625,53.44226352500859],[16.710205078125,53.27178347923819],[16.06201171875,53.01147838269373],[15.875244140625,53.100620879214304],[15.3314208984375,52.948637884883205],[14.6337890625,52.626394589731326],[14.1558837890625,52.8757609818473],[14.403076171875,53.28163740806336],[14.2822265625,53.73896488496292],[14.4635009765625,53.9560855309879],[16.6717529296875,54.559322587438636]]]}}}})
+db.polskiemiasta.find(
+  {loc: 
+    {$geoWithin: 
+      {$geometry: 
+        {type: "Polygon", 
+        coordinates: 
+	  [[[16.6717529296875,54.559322587438636],
+	    [16.858520507812496,54.23955053156179],
+	    [16.737670898437496,54.210648685175904],
+	    [16.8475341796875,53.97224342934289],
+	    [16.885986328125,53.6544055985474],
+	    [16.4410400390625,53.44226352500859],
+	    [16.710205078125,53.27178347923819],
+	    [16.06201171875,53.01147838269373],
+	    [15.875244140625,53.100620879214304],
+	    [15.3314208984375,52.948637884883205],
+	    [14.6337890625,52.626394589731326],
+	    [14.1558837890625,52.8757609818473],
+	    [14.403076171875,53.28163740806336],
+	    [14.2822265625,53.73896488496292],
+	    [14.4635009765625,53.9560855309879],
+	    [16.6717529296875,54.559322587438636]]]
+	 }
+       }
+     }
+   }
+)
 
 [Geojson2](https://github.com/alatoszewski/nosql-mongo/blob/master/Zapytanie2.geojson)
 
 Zapytanie 3. Szukamy miast będących na południku 15.733795166015623:
 ```sh
-db.polskiemiasta.find({loc: {$geoIntersects: {$geometry: {type: "LineString", coordinates: [[15.733795166015623, -90],[15.733795166015623, 90]]}}}})
+db.polskiemiasta.find(
+  {loc: 
+    {$geoIntersects: 
+      {$geometry: 
+        {type: "LineString", 
+         coordinates: 
+	   [[15.733795166015623, -90],
+           [15.733795166015623, 90]]
+        }
+      }
+    }
+  }
+)
      
 ```
 
@@ -136,20 +186,58 @@ db.polskiemiasta.find({loc: {$geoIntersects: {$geometry: {type: "LineString", co
 
 Zapytanie 4. Szuakmy trzech miast najbliższych Słupsku:
 ```sh
-db.polskiemiasta.find({loc: {$near: {$geometry: {type: "Point", coordinates: [17.019195556640625,54.46804241740563]}}}}).limit(3)
+db.polskiemiasta.find(
+  {loc: 
+    {$near: 
+      {$geometry: 
+        {type: "Point", 
+         coordinates: [17.019195556640625,54.46804241740563]
+        }
+      }
+    }
+  }
+).limit(3)
 ```
 
 [Geojson4](https://github.com/alatoszewski/nosql-mongo/blob/master/Zapytanie4.geojson)
 
 Zapytanie 5. Reuzltat taki sam jak w zapytaniu 2. Użycie komendy $geoIntersect (co zachodzi w interakcję z polygonem)
 ```sh
-db.polskiemiasta.find({loc: {$geoIntersects: {$geometry: {type: "Polygon", coordinates: [[[19.259033203125, 52.3923633970718], [18.1768798828125, 51.17589926990911], [19.7259521484375, 50.86144411058924], [20.5059814453125, 51.50532341149335], [20.23681640625, 52.1166256737882], [19.259033203125, 52.3923633970718]]]}}}})
+db.polskiemiasta.find(
+  {loc: 
+    {$geoIntersects: 
+      {$geometry: 
+        {type: "Polygon", 
+         coordinates: 
+         [[[19.259033203125, 52.3923633970718], 
+           [18.1768798828125, 51.17589926990911], 
+           [19.7259521484375, 50.86144411058924], 
+           [20.5059814453125, 51.50532341149335], 
+           [20.23681640625, 52.1166256737882], 
+           [19.259033203125, 52.3923633970718]]]
+        }
+      }
+    }
+  }
+)
 ```
 [Geojson5](https://github.com/alatoszewski/nosql-mongo/blob/master/Zapytanie5.geojson)
 
 Zapytanie 6. Miasta na drodze pomiędzy Gdańskiem a Zakopanem:
 ```sh
-db.polskiemiasta.find({loc: {$geoIntersects: {$geometry: {type: "LineString", coordinates: [ [[18.655128479003906,54.34815256064472]], [19.948768615722656,49.29803885147804]]}}}})
+db.polskiemiasta.find(
+  {loc: 
+    {$geoIntersects: 
+      {$geometry: 
+        {type: "LineString", 
+        coordinates: 
+        [[[18.655128479003906,54.34815256064472]], 
+        [19.948768615722656,49.29803885147804]]
+        }
+      }
+    }
+  }
+)
 ```
 
 [Geojson6](https://github.com/alatoszewski/nosql-mongo/blob/master/Zapytanie6.geojson)
