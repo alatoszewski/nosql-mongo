@@ -1,3 +1,15 @@
+### Specyfikacja komputera
+
+| Rodzaj komponentu     | Komponent                       |
+|-----------------------|---------------------------------|
+| OS                    | Kubuntu 64bit 14.04             |
+| CPU                   | Intel Core i5 4460              |
+| Ilość rdzeni          | 4                               |
+| RAM                   | 8 GB                            |
+| Dysku twardy          | HDD                             |
+
+
+
 ### Zadanie 1a
 
 #####Przygotowanie pliku
