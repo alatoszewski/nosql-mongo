@@ -47,6 +47,7 @@ db.movies.aggregate(
 ```
 
 Wykres:
+
 ![Zadanie2Zapytanie1.jpg](https://raw.githubusercontent.com/alatoszewski/nosql-mongo/master/Zadanie2Zapytanie1.jpg)
 
 ##Zapytanie 2
@@ -84,6 +85,7 @@ db.movies.aggregate(
 { "_id" : "Titanic", "count" : 20791 }
 ```
 Wykres:
+
 ![Zadanie2Zapytanie2.jpg](https://raw.githubusercontent.com/alatoszewski/nosql-mongo/master/Zadanie2Zapytanie2.jpg)
 
 ##Zapytanie 3
@@ -112,6 +114,7 @@ db.movies.aggregate({"$group":{"_id": "$userId", "count":{"$sum": 1}}},
 { "_id" : "husainholic", "count" : 32135 }
 ```
 Wykres:
+
 ![Zadanie2Zapytanie3.jpg](https://raw.githubusercontent.com/alatoszewski/nosql-mongo/master/Zadanie2Zapytanie3.jpg)
 
 ##Zapytanie 4
@@ -173,4 +176,5 @@ db.movies.aggregate(
 ```
 
 Wykres:
+
 ![Zadanie2Zapytanie4.jpg](https://raw.githubusercontent.com/alatoszewski/nosql-mongo/master/Zadanie2Zapytanie4.jpg)
