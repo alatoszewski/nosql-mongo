@@ -46,6 +46,9 @@ db.movies.aggregate(
 { "_id" : "steven spielberg", "count" : 41 }
 ```
 
+Wykres:
+![Zadanie2Zapytanie1.jpg](https://raw.githubusercontent.com/alatoszewski/nosql-mongo/master/Zadanie2Zapytanie1.jpg)
+
 ##Zapytanie 2
 
 10 najpopularniejszych filmow i programow telewizyjnych.
@@ -80,7 +83,8 @@ db.movies.aggregate(
 { "_id" : "The Hangover", "count" : 22709 }
 { "_id" : "Titanic", "count" : 20791 }
 ```
-
+Wykres:
+![Zadanie2Zapytanie2.jpg](https://raw.githubusercontent.com/alatoszewski/nosql-mongo/master/Zadanie2Zapytanie2.jpg)
 
 ##Zapytanie 3
 10 najbardziej aktywnych użytkowników
@@ -107,7 +111,8 @@ db.movies.aggregate({"$group":{"_id": "$userId", "count":{"$sum": 1}}},
 { "_id" : "ellen_turner", "count" : 32239 }
 { "_id" : "husainholic", "count" : 32135 }
 ```
-
+Wykres:
+![Zadanie2Zapytanie3.jpg](https://raw.githubusercontent.com/alatoszewski/nosql-mongo/master/Zadanie2Zapytanie3.jpg)
 
 ##Zapytanie 4
 Szukamy wpisów które zostały skomentowane oraz mają status Disliked.
@@ -166,3 +171,6 @@ db.movies.aggregate(
 { "_id" : "Clash of the Titans", "count" : 10 }
 { "_id" : "Spider-Man 3", "count" : 10 }
 ```
+
+Wykres:
+![Zadanie2Zapytanie4.jpg](https://raw.githubusercontent.com/alatoszewski/nosql-mongo/master/Zadanie2Zapytanie4.jpg)
