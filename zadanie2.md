@@ -1,4 +1,4 @@
-### Zadanie 2
+# Zadanie 2
 W tym zadaniu wykorzystalem baze GetGlue i biblioteke PyMongo.
 
 Aby zainicjalizowac baze wpisalem ponizsze linijki kodu:
@@ -7,11 +7,11 @@ Aby zainicjalizowac baze wpisalem ponizsze linijki kodu:
 from pymongo import MongoClient
 db = MongoClient().getglue
 ```
-###Zapytanie 1
+##Zapytanie 1
 
 Ponizsza agregacja zwraca 10 rezyserow ktorzy nakrecili najwiecej filmow:
 
-#MongoDB
+###MongoDB
 ```sh
 db.movies.aggregate(
     { $match: {"modelName": "movies" || "tv_shows"  } },
@@ -22,7 +22,7 @@ db.movies.aggregate(
     );
 ```
 
-#pymongo
+###pymongo
 ```sh
 db.movies.aggregate(
     { "$match": {"modelName": "movies" || "tv_shows"  } },
@@ -46,10 +46,10 @@ db.movies.aggregate(
 { "_id" : "steven spielberg", "count" : 41 }
 ```
 
-###Zapytanie 2
+##Zapytanie 2
 
 10 najpopularniejszych filmow i programow telewizyjnych.
-#MongoDB
+###MongoDB
 ```sh
 db.movies.aggregate(
     { $match: {"modelName": "movies" || "tv_shows"  } },
@@ -58,7 +58,7 @@ db.movies.aggregate(
     { $limit : 10}
     );
   ```  
-#pymongo
+###pymongo
 ```sh
 db.movies.aggregate(
     { "$match": {"modelName": "movies" || "tv_shows"  } },
@@ -82,13 +82,13 @@ db.movies.aggregate(
 ```
 
 
-###Zapytanie 3
+##Zapytanie 3
 10 najbardziej aktywnych użytkowników
-#MongoDB
+###MongoDB
 ```sh
 db.movies.aggregate({$group:{_id: "$userId", count:{$sum: 1}}},{$sort:{count: -1}},{$limit: 10});
 ```
-#pymongo
+###pymongo
 ```sh
 
 db.movies.aggregate({"$group":{"_id": "$userId", "count":{"$sum": 1}}},
@@ -109,10 +109,10 @@ db.movies.aggregate({"$group":{"_id": "$userId", "count":{"$sum": 1}}},
 ```
 
 
-###Zapytanie 4
+##Zapytanie 4
 Szukamy wpisów które zostały skomentowane oraz mają status Disliked.
 
-#MongoDB
+###MongoDB
 ```sh
 db.movies.aggregate(
   {$match: 
@@ -131,7 +131,7 @@ db.movies.aggregate(
   {$limit: 10}
 );
 ```
-#pymongo
+###pymongo
 ```sh
 db.movies.aggregate(
   {"$match": 
