@@ -213,7 +213,7 @@ db.polskiemiasta.find(
 
 [Geojson4](https://github.com/alatoszewski/nosql-mongo/blob/master/Zapytanie4.geojson)
 
-Zapytanie 5. Reuzltat taki sam jak w zapytaniu 2. Użycie komendy $geoIntersect (co zachodzi w interakcję z polygonem)
+Zapytanie 5. Reuzultat taki sam jak w zapytaniu 2. Użycie komendy $geoIntersect (co zachodzi w interakcję z polygonem)
 ```sh
 db.polskiemiasta.find(
   {loc: 
@@ -233,7 +233,7 @@ db.polskiemiasta.find(
   }
 )
 ```
-[Geojson5](https://github.com/alatoszewski/nosql-mongo/blob/master/Zapytanie5.geojson)
+[Geojson5](https://github.com/alatoszewski/nosql-mongo/blob/master/Zapytanie2.geojson)
 
 Zapytanie 6. Miasta na drodze pomiędzy Gdańskiem a Zakopanem:
 ```sh
